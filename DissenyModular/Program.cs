@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq.Expressions;
+
 public class Program
 {
     public static void Main()
@@ -9,7 +9,7 @@ public class Program
         const string MsgExercise = "Choose an option\n" +
             "1 - Value in range\n" +
             "0 - Exit";
-        const string Error = "Invalid Input, please enter a number between 0 and 10";
+        const string Error = "Invalid Input, please enter a 1 or a 0";
         const string Exit = "Exiting...";
         const string Wolf = "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠁⠸⢳⡄⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠃⠀⠀⢸⠸⠀⡠⣄⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠃⠀⠀⢠⣞⣀⡿⠀⠀⣧⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⡖⠁⠀⠀⠀⢸⠈⢈⡇⠀⢀⡏⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⡴⠩⢠⡴⠀⠀⠀⠀⠀⠈⡶⠉⠀⠀⡸⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⢀⠎⢠⣇⠏⠀⠀⠀⠀⠀⠀⠀⠁⠀⢀⠄⡇⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⢠⠏⠀⢸⣿⣴⠀⠀⠀⠀⠀⠀⣆⣀⢾⢟⠴⡇⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⢀⣿⠀⠠⣄⠸⢹⣦⠀⠀⡄⠀⠀⢋⡟⠀⠀⠁⣇⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⢀⡾⠁⢠⠀⣿⠃⠘⢹⣦⢠⣼⠀⠀⠉⠀⠀⠀⠀⢸⡀⠀⠀⠀⠀\r\n⠀⠀⢀⣴⠫⠤⣶⣿⢀⡏⠀⠀⠘⢸⡟⠋⠀⠀⠀⠀⠀⠀⠀⠀⢳⠀⠀⠀⠀\r\n⠐⠿⢿⣿⣤⣴⣿⣣⢾⡄⠀⠀⠀⠀⠳⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢣⠀⠀⠀\r\n⠀⠀⠀⣨⣟⡍⠉⠚⠹⣇⡄⠀⠀⠀⠀⠀⠀⠀⠀⠈⢦⠀⠀⢀⡀⣾⡇⠀⠀\r\n⠀⠀⢠⠟⣹⣧⠃⠀⠀⢿⢻⡀⢄⠀⠀⠀⠀⠐⣦⡀⣸⣆⠀⣾⣧⣯⢻⠀⠀\r\n⠀⠀⠘⣰⣿⣿⡄⡆⠀⠀⠀⠳⣼⢦⡘⣄⠀⠀⡟⡷⠃⠘⢶⣿⡎⠻⣆⠀⠀\r\n⠀⠀⠀⡟⡿⢿⡿⠀⠀⠀⠀⠀⠙⠀⠻⢯⢷⣼⠁⠁⠀⠀⠀⠙⢿⡄⡈⢆⠀\r\n⠀⠀⠀⠀⡇⣿⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠦⠀⠀⠀⠀⠀⠀⡇⢹⢿⡀\r\n⠀⠀⠀⠀⠁⠛⠓⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠇⠁";
         const string Key = "Press any key to continue";        
@@ -24,8 +24,7 @@ public class Program
         {
             try
             {
-                Console.WriteLine(MsgExercise);
-                op = Int32.Parse(Console.ReadLine() ?? "-1");
+                op = validateOption(MsgExercise);
                 switch (op)
                 {
                     case 0:
@@ -44,17 +43,37 @@ public class Program
                             Swap(ref numMax, ref numMin);
                         }
                         Console.WriteLine(isInRange(value, numMin, numMax) ? string.Format(InRange, value, numMin, numMax) : string.Format(OutRange, value, numMin, numMax));
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine(Key);
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadKey();
                         Console.Clear();
+                        break;
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine(Error);
+                        Console.ForegroundColor = ConsoleColor.White;
                         break;
                 }
             }
             catch (FormatException)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(Error);
+                Console.ForegroundColor = ConsoleColor.White;
             }
         } while (op != 0);
+    }
+    public static int validateOption(string text)
+    {
+        int value;
+        do
+        {
+            Console.WriteLine(text);
+            Console.ForegroundColor = ConsoleColor.Green;
+        } while (!Int32.TryParse(Console.ReadLine(), out value));
+        Console.ForegroundColor = ConsoleColor.White;
+        return value;
     }
     public static int validateInput(string text)
     {
@@ -62,7 +81,9 @@ public class Program
         do
         {
             Console.Write(text);
+            Console.ForegroundColor= ConsoleColor.Green;
         } while (!Int32.TryParse(Console.ReadLine(), out value));
+        Console.ForegroundColor = ConsoleColor.White;
         return value;
     }
     public static void Swap(ref int max, ref int min)
