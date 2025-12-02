@@ -7,22 +7,16 @@ public class Program
         Console.OutputEncoding = System.Text.Encoding.UTF8;
 
         const string MsgExercise = "Choose an option\n" +
-            "1 - Change Temperature\n" +
+            "1 - Parking\n" +
             "0 - Exit";
         const string Error = "Invalid Input, please enter a 1 or a 0";
         const string Exit = "Exiting...";
         const string Wolf = "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠁⠸⢳⡄⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠃⠀⠀⢸⠸⠀⡠⣄⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠃⠀⠀⢠⣞⣀⡿⠀⠀⣧⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⡖⠁⠀⠀⠀⢸⠈⢈⡇⠀⢀⡏⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⡴⠩⢠⡴⠀⠀⠀⠀⠀⠈⡶⠉⠀⠀⡸⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⢀⠎⢠⣇⠏⠀⠀⠀⠀⠀⠀⠀⠁⠀⢀⠄⡇⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⢠⠏⠀⢸⣿⣴⠀⠀⠀⠀⠀⠀⣆⣀⢾⢟⠴⡇⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⢀⣿⠀⠠⣄⠸⢹⣦⠀⠀⡄⠀⠀⢋⡟⠀⠀⠁⣇⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⢀⡾⠁⢠⠀⣿⠃⠘⢹⣦⢠⣼⠀⠀⠉⠀⠀⠀⠀⢸⡀⠀⠀⠀⠀\r\n⠀⠀⢀⣴⠫⠤⣶⣿⢀⡏⠀⠀⠘⢸⡟⠋⠀⠀⠀⠀⠀⠀⠀⠀⢳⠀⠀⠀⠀\r\n⠐⠿⢿⣿⣤⣴⣿⣣⢾⡄⠀⠀⠀⠀⠳⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢣⠀⠀⠀\r\n⠀⠀⠀⣨⣟⡍⠉⠚⠹⣇⡄⠀⠀⠀⠀⠀⠀⠀⠀⠈⢦⠀⠀⢀⡀⣾⡇⠀⠀\r\n⠀⠀⢠⠟⣹⣧⠃⠀⠀⢿⢻⡀⢄⠀⠀⠀⠀⠐⣦⡀⣸⣆⠀⣾⣧⣯⢻⠀⠀\r\n⠀⠀⠘⣰⣿⣿⡄⡆⠀⠀⠀⠳⣼⢦⡘⣄⠀⠀⡟⡷⠃⠘⢶⣿⡎⠻⣆⠀⠀\r\n⠀⠀⠀⡟⡿⢿⡿⠀⠀⠀⠀⠀⠙⠀⠻⢯⢷⣼⠁⠁⠀⠀⠀⠙⢿⡄⡈⢆⠀\r\n⠀⠀⠀⠀⡇⣿⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠦⠀⠀⠀⠀⠀⠀⡇⢹⢿⡀\r\n⠀⠀⠀⠀⠁⠛⠓⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠇⠁";
         const string Key = "Press any key to continue";
-        const string EnterTemp = "Enter a decimal temperature: ";
-        const string TypeConvert = "1: Celsius a Fahrenheit\n" +
-            "2: Fahrenheit a Celsius\n" +
-            "3: Celsius a Kelvin";
-        const string NoAttempts = "Run ount of attempts";
-        const string ToFahr = "{0}ºC in Fahrenheit are {1}ºF";
-        const string ToCel = "{0}ºF in Celsius are {1}ºC";
-        const string ToKelv = "{0}ºC in Kelvin are {1}K";
-        int count, tempOp = 0, op = 0-1;
-        double temp = 0.0, tempChange;
+        const string MsgHours = "Enter the hours: ";
+        const string MsgMinutes = "Enter the minutes: ";
+        const string HavePay = "You have to pay {0}€ for the parking.";
+        double hours = 0, minutes = 0, price = 0, op = -1;
 
         do
         {
@@ -39,27 +33,12 @@ public class Program
                         Console.ForegroundColor = ConsoleColor.White;
                         break;
                     case 1:
-                        count = 0;
-                        temp = validateInput(EnterTemp);
-                        validateOptioTemp(TypeConvert, count, ref tempOp);
-                        switch (tempOp)
-                        {
-                            case 1:
-                                tempChange = temp * (9.0 / 5.0) + 32;
-                                WriteTemp(ToFahr, temp, tempChange);
-                                break;
-                            case 2:
-                                tempChange = (temp - 32.0) * (5.0 / 9.0);
-                                WriteTemp(ToCel, temp, tempChange);
-                                break;
-                            case 3:
-                                tempChange = temp + 273.15;
-                                WriteTemp(ToKelv, temp, tempChange);
-                                break;
-                            default:
-                                Console.WriteLine(NoAttempts);
-                                break;
-                        }
+                        hours = validateInput(MsgHours);
+                        AbsoluteValue(ref hours);
+                        minutes = validateInput(MsgMinutes);
+                        AbsoluteValue(ref minutes);
+                        price = ParkingCost(hours, ref minutes, price);
+                        Console.WriteLine(HavePay, price);
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine(Key);
                         Console.ForegroundColor = ConsoleColor.White;
@@ -103,26 +82,32 @@ public class Program
         Console.ForegroundColor = ConsoleColor.White;
         return value;
     }
-    public static void validateOptioTemp(string TypeConvert, int count, ref int tempOp)
+    public static double ParkingCost(double h, ref double min, double price)
     {
-        do
+        AllMinutes(ref h, min);
+        if (h <= 1)
         {
-            tempOp = validateInput(TypeConvert, tempOp, ref count);
-        } while (!isInRange(tempOp, 1, 3) && count < 3);
-    }
-    public static int validateInput(string text, int value, ref int count)
-    {
-        do
+            price = 3.50;
+        }
+        else if (h > 1 && h <= 5)
         {
-            Console.WriteLine(text);
-            count++;
-        } while (!Int32.TryParse(Console.ReadLine(), out value) && count < 3);
-        return value;
+            price = ((h - 1) * 2.0) + 3.50;
+        }
+        else
+        {
+            price = ((h - 6) * 1.50) + 3.50 + 8.0;
+        }
+        price = Math.Round(price, 2);
+        return price;
     }
-    public static bool isInRange(int value, int min, int max) => value >= min && value <= max;
-    public static void WriteTemp(string text, double temp, double tempChange)
+    public static void AllMinutes(ref double h, double min)
     {
-        tempChange = Math.Round(tempChange, 2);
-        Console.WriteLine(text, temp, tempChange);
+        h += (min / 60.0);
     }
+    public static void AbsoluteValue(ref double num)
+    {
+        if (num < 0)
+            num *= -1;
+    }
+
 }
