@@ -13,16 +13,21 @@ public class Program
         const string Exit = "Exiting...";
         const string Wolf = "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠁⠸⢳⡄⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠃⠀⠀⢸⠸⠀⡠⣄⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠃⠀⠀⢠⣞⣀⡿⠀⠀⣧⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⡖⠁⠀⠀⠀⢸⠈⢈⡇⠀⢀⡏⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⡴⠩⢠⡴⠀⠀⠀⠀⠀⠈⡶⠉⠀⠀⡸⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⢀⠎⢠⣇⠏⠀⠀⠀⠀⠀⠀⠀⠁⠀⢀⠄⡇⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⢠⠏⠀⢸⣿⣴⠀⠀⠀⠀⠀⠀⣆⣀⢾⢟⠴⡇⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⢀⣿⠀⠠⣄⠸⢹⣦⠀⠀⡄⠀⠀⢋⡟⠀⠀⠁⣇⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⢀⡾⠁⢠⠀⣿⠃⠘⢹⣦⢠⣼⠀⠀⠉⠀⠀⠀⠀⢸⡀⠀⠀⠀⠀\r\n⠀⠀⢀⣴⠫⠤⣶⣿⢀⡏⠀⠀⠘⢸⡟⠋⠀⠀⠀⠀⠀⠀⠀⠀⢳⠀⠀⠀⠀\r\n⠐⠿⢿⣿⣤⣴⣿⣣⢾⡄⠀⠀⠀⠀⠳⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢣⠀⠀⠀\r\n⠀⠀⠀⣨⣟⡍⠉⠚⠹⣇⡄⠀⠀⠀⠀⠀⠀⠀⠀⠈⢦⠀⠀⢀⡀⣾⡇⠀⠀\r\n⠀⠀⢠⠟⣹⣧⠃⠀⠀⢿⢻⡀⢄⠀⠀⠀⠀⠐⣦⡀⣸⣆⠀⣾⣧⣯⢻⠀⠀\r\n⠀⠀⠘⣰⣿⣿⡄⡆⠀⠀⠀⠳⣼⢦⡘⣄⠀⠀⡟⡷⠃⠘⢶⣿⡎⠻⣆⠀⠀\r\n⠀⠀⠀⡟⡿⢿⡿⠀⠀⠀⠀⠀⠙⠀⠻⢯⢷⣼⠁⠁⠀⠀⠀⠙⢿⡄⡈⢆⠀\r\n⠀⠀⠀⠀⡇⣿⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠦⠀⠀⠀⠀⠀⠀⡇⢹⢿⡀\r\n⠀⠀⠀⠀⠁⠛⠓⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠇⠁";
         const string Key = "Press any key to continue";
-        const string MsgHours = "Enter the hours: ";
-        const string MsgMinutes = "Enter the minutes: ";
-        const string HavePay = "You have to pay {0}€ for the parking.";
-        double hours = 0, minutes = 0, price = 0, op = -1;
+        const string Longumber = "Enter a natural long number (1 digit min and 8 max): ";
+        const string SumEven = "The sum of all number in a even position is: {0}.";
+        const string MultiOdd = "The product of all number in a odd position is: {0}.";
+        const string MsgMaxMin = "The higher number is: {0}, and the lower number is: {1}.";
+        int numbers = 0, sum, multi, higher, lower, op = -1;
+        string stringNumbers = "";
 
         do
         {
             try
             {
-                op = validateOption(MsgExercise);
+                Console.WriteLine(MsgExercise);
+                Console.ForegroundColor = ConsoleColor.Green;
+                op = Int32.Parse(Console.ReadLine() ?? "-1");
+                Console.ForegroundColor = ConsoleColor.White;
                 switch (op)
                 {
                     case 0:
@@ -33,12 +38,16 @@ public class Program
                         Console.ForegroundColor = ConsoleColor.White;
                         break;
                     case 1:
-                        hours = validateInput(MsgHours);
-                        AbsoluteValue(ref hours);
-                        minutes = validateInput(MsgMinutes);
-                        AbsoluteValue(ref minutes);
-                        price = ParkingCost(hours, ref minutes, price);
-                        Console.WriteLine(HavePay, price);
+                        numbers = validateInput(Longumber);
+                        stringNumbers = numbers.ToString();
+                        sum = SumPar(stringNumbers);
+                        Console.WriteLine(SumEven, sum);
+                        multi = ProdOdd(stringNumbers);
+                        Console.WriteLine(MultiOdd, multi);
+                        higher = 0;
+                        lower = 9;
+                        MaxMin(stringNumbers, ref higher, ref lower);
+                        Console.WriteLine(MsgMaxMin, higher, lower);
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine(Key);
                         Console.ForegroundColor = ConsoleColor.White;
@@ -60,54 +69,60 @@ public class Program
             }
         } while (op != 0);
     }
-    public static int validateOption(string text)
+    public static int validateInput(string text)
     {
         int value;
         do
         {
-            Console.WriteLine(text);
+            Console.Write(text);
             Console.ForegroundColor = ConsoleColor.Green;
         } while (!Int32.TryParse(Console.ReadLine(), out value));
         Console.ForegroundColor = ConsoleColor.White;
         return value;
     }
-    public static double validateInput(string text)
+    public static int SumPar(string text)
     {
-        double value;
-        do
+        int count = 1, sum = 0, num;
+        foreach (char word in text)
         {
-            Console.Write(text);
-            Console.ForegroundColor= ConsoleColor.Green;
-        } while (!Double.TryParse(Console.ReadLine(), out value));
-        Console.ForegroundColor = ConsoleColor.White;
-        return value;
-    }
-    public static double ParkingCost(double h, ref double min, double price)
-    {
-        AllMinutes(ref h, min);
-        if (h <= 1)
-        {
-            price = 3.50;
+            if (count % 2 == 0)
+            {
+                num = int.Parse(word.ToString());
+                sum += num;
+            }
+            count++;
         }
-        else if (h > 1 && h <= 5)
-        {
-            price = ((h - 1) * 2.0) + 3.50;
-        }
-        else
-        {
-            price = ((h - 6) * 1.50) + 3.50 + 8.0;
-        }
-        price = Math.Round(price, 2);
-        return price;
+        return sum;
     }
-    public static void AllMinutes(ref double h, double min)
+    public static int ProdOdd(string text)
     {
-        h += (min / 60.0);
+        int count = 1, multi = 1, num;
+        foreach (char word in text)
+        {
+            if (count % 2 != 0)
+            {
+                num = int.Parse(word.ToString());
+                multi *= num;
+            }
+            count++;
+        }
+        return multi;
     }
-    public static void AbsoluteValue(ref double num)
+    public static void MaxMin(string text, ref int max, ref int min)
     {
-        if (num < 0)
-            num *= -1;
+        int count = 1, num;
+        foreach (char word in text)
+        {
+            num = int.Parse(word.ToString());
+            if (num < min)
+            {
+                min = num;
+            }
+            else if (num > max)
+            {
+                max = num;
+            }
+            count++;
+        }
     }
-
 }
